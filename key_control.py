@@ -1,6 +1,7 @@
 #import curses and GPIO
 import curses
 import RPi.GPIO as GPIO
+import os
 
 #set GPIO numbering mode and define output pins
 GPIO.setmode(GPIO.BOARD)
@@ -24,6 +25,8 @@ try:
         char = screen.getch()
         if char == ord("q"):
             break
+        if char == ord("S"):
+            os.system ("sudo shutdown now")
         elif char == curses.KEY_UP:
             print ("up")
             GPIO.output(13,True)
